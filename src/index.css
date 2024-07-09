@@ -1,0 +1,21 @@
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+ /* Adjust the default weight as needed */
+}
+
+/* Utility classes for different font weights */
+.font-weight-200 {
+  font-weight: 200;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.font-weight-800 {
+  font-weight: 800;
+}
