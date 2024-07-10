@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .env
 * text=auto
+Pictures/Photos Library.photoslibrary/
 
 # Editor directories and files
 .vscode/*
