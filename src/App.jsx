@@ -1,14 +1,19 @@
-import React from 'react';
-import Header from './components/Header';
-import Home from './components/Home';
+import React from "react";
+import Home from "../pages/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "../pages/Dashboard";
 
 
 const App = () => {
   return (
-    <>
-    <Home/>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/dashboard" element={<Dashboard/>} />
+        
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;

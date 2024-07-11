@@ -10,7 +10,22 @@
   justify-content: center;
   text-align: center;
 }
+@media (max-width: 767px) {
+  .home {
+    background-image: url('/Mobile.png'); /* Replace with the path to your mobile image */
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .home {
+    background-image: url('/Tablet.png'); /* Replace with the path to your tablet image */
+  }
+}
 
+@media (min-width: 1200px) {
+  .home {
+    background-image: url('/Widescreen.png');
+  }
+}
 
 .header-h1{
     font-weight: 700;
@@ -30,11 +45,6 @@ text-align: center;
 color: #094817;
   font-family: 'Plus Jakarta Sans';
 
-
-
-
-
-
 }
 .header-btn {
   margin-top: 20px; /* Add margin to adjust the position */
@@ -44,10 +54,14 @@ color: #094817;
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  width: 186px;
-height: 55px;
-padding: 16px 32px 16px 32px;
+  width: 249px;
+height: 56px;
+padding: 17px, 64px, 17px, 64px;
 font-weight: 700;
  font-family: 'Plus Jakarta Sans';
 }
 
+.header-btn:hover{
+  background-color: #CADA10;
+
+}
