@@ -1,5 +1,4 @@
 import React from 'react';
-import "/Users/codetalk/Documents/ChefMate/ChefMate frontend/app/styles/sidebar.css";
 
 const Sidebar = () => {
   return (
