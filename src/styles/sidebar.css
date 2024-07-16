@@ -1,0 +1,124 @@
+* {
+    font-family: PlusJakartaSans;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+html, body {
+    height: 100%;
+}
+.sidebar {
+  width: 348px;
+  height: 100vh;
+  padding: 24px 15px 851px 24px;
+  background-color: #faf8f3;
+  border-radius:0 20px 20px 0;
+  box-shadow: 0px 0px 4px 0px #CFD1B4
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: 33px;
+  margin-right: 112px; 
+}
+
+.double-karat-logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 25px;
+  
+}
+
+.main-btn {
+  width: 300px;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 42px  10px 3px;
+  padding: 12px 24px 12px ;
+  border-radius: 30px;
+  background-color: #035C41;
+  font: 1rem;
+  color: white;
+  border: 1px none;
+}
+
+.assumption {
+  width: 284px;
+  height: 20px;
+  margin: 10px 17px 0 11px;
+  font-family: PlusJakartaSans;
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: italic;
+  line-height: 1.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #808f71;
+}
+
+/* Media query for tablets */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+    padding: 20px 10px;
+  }
+
+  .logo,
+  .double-karat-logo {
+    height: 28px;
+    margin-right: 8px;
+  }
+
+  .main-btn {
+    width: 250px;
+    margin: 30px 5px 10px 2px;
+    padding: 8px 30px;
+  }
+
+  .assumption {
+    width: 220px;
+    font-size: 11px;
+  }
+}
+
+/* Media query for mobile phones */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 15px 10px;
+  }
+
+  .sidebar-header {
+    justify-content: center;
+  }
+
+  .logo,
+  .double-karat-logo {
+    height: 24px;
+    margin-right: 5px;
+  }
+
+  .main-btn {
+    width: 100%;
+    margin: 20px 0;
+    padding: 8px 20px;
+  }
+
+  .assumption {
+    width: 100%;
+    font-size: 10px;
+  }
+}
