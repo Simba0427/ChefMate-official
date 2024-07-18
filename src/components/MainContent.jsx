@@ -1,7 +1,9 @@
 import React from 'react';
 import '../styles/MainContent.css';
 
-const MainContent = ({isIngredientsBoxVisible}) => {
+
+const MainContent = ({searchResults}) => {
+
   return (
     <div className="main-content">
       <div className="green-box">
@@ -11,29 +13,32 @@ const MainContent = ({isIngredientsBoxVisible}) => {
           aligned options to plan upcoming meals with ease.
         </p>
       </div>
-      {!isIngredientsBoxVisible &&(
-        
-      <div className="no-recipes">
-        <p>
-          No recipes yet.
-          <br />
-          Start by adding ingredients.
-        </p>
+      <div className="search-results">
+        {searchResults && searchResults.length > 0 ? (
+          <ul>
+            {searchResults.map((result, index) => (
+              <li key={index}>
+                <div>
+                  <img src={result.recipe.image} alt={result.recipe.label} />
+                  <p>{result.recipe.label}</p>
+                  <a
+                    href={result.recipe.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Recipe
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          searchResults && searchResults.length === 0 &&
+          <p>No results found.</p>
+        )}
       </div>
-      )}
-      {isIngredientsBoxVisible && (
-        <div id="ingredients-box" className="ingredients-box">
-          <h2 className='title'>Add Your Ingredients</h2>
-          <input className='ingredients-input' type="text" placeholder="Manually add ingredients" />
-          <div>OR</div>
-          <div className='upload-box'>
-            <p>Drag & Drop, or Browse</p>
-
-          </div>
-        </div>
-      )}
     </div>
   );
-}
+};
 
 export default MainContent

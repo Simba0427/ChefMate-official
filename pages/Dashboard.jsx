@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import Sidebar from '../src/components/Sidebar'
 import MainContent from '../src/components/MainContent'
+import axios from 'axios';
+import Search from '../src/components/Search';
 
 const Dashboard = () => {
 
-  const [isIngredientsBoxVisible, setIsIngredientsBoxVisible] = useState(false);
+  
   const [ingredients, setIngredients] = useState([]);
+  const [searchResults,setSearchResults] = useState([]);
 
   const toggleIngredientsBox = () => {
     setIsIngredientsBoxVisible(!isIngredientsBoxVisible);
@@ -20,6 +23,18 @@ const Dashboard = () => {
   const removeIngredient = (ingredient) =>{
     setIngredients(ingredients.filter((item)=> item !== ingredient));
   };
+
+  const searchRecipes = async () => {
+    try {
+      const response = await axios.post("http://127.0.0.1:5000/search", {
+        recipe_name: ingredients.join(","),
+      });
+      setSearchResults(response.data.results);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+      alert("Error fetching recipes");
+    }
+  };
   
   const containerStyle = {
     display: "flex",
@@ -28,15 +43,13 @@ const Dashboard = () => {
   return (
     <div style={containerStyle}>
       <Sidebar
-        toggleIngredientsBox={toggleIngredientsBox}
         ingredients={ingredients}
-        removeIngredient={removeIngredient}
-      />
-      <MainContent
-        isIngredientsBoxVisible={isIngredientsBoxVisible}
-        toggleIngredientsBox={toggleIngredientsBox}
         addIngredient={addIngredient}
+        removeIngredient={removeIngredient}
+        searchRecipes={searchRecipes}
       />
+
+      <MainContent searchResults={searchResults} />
     </div>
   );
 }
