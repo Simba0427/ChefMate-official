@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/sidebar.css';
 import Logo from './Logo';
 import DoubleKaratLogo from './DoubleKaratLogo';
@@ -11,6 +11,8 @@ const Sidebar = ({
 }) => {
   const [newIngredient, setNewIngredient] = useState("");
   const [isIngredientsBoxVisible, setIsIngredientsBoxVisible] = useState(false);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddIngredient = () => {
     if (newIngredient.trim() !== "") {
@@ -18,9 +20,29 @@ const Sidebar = ({
       setNewIngredient("");
     }
   };
+
+  useEffect(() => {
+    const handleSearchRecipes = async () => {
+      if (ingredients.length === 0) return;
+      try {
+        setError(null); 
+        setIsLoading(true); 
+        await searchRecipes();
+      } catch (error) {
+        setError("Error fetching recipes. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    handleSearchRecipes();
+  }, [ingredients]);
+
+
   const toggleIngredientsBox = () => {
     setIsIngredientsBoxVisible(!isIngredientsBoxVisible);
   };
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -47,9 +69,10 @@ const Sidebar = ({
             value={newIngredient} // Bind the input value to the newIngredient state
             onChange={(e) => setNewIngredient(e.target.value)} // Update the newIngredient state on input change
           />
-          <button className="add-btn" onClick={handleAddIngredient}>
-            Add
+          <button className="add-btn" onClick={() => { handleAddIngredient(); handleSearchRecipes(); }}>
+          {isLoading ? 'Adding...' : 'Add'}
           </button>
+          
           <div>OR</div>
           <div className="upload-box">
             <p>
@@ -73,13 +96,9 @@ const Sidebar = ({
           </li>
         ))}
       </ul>
-      {ingredients.length > 0 && (
-        <button className="search-btn" onClick={searchRecipes}>
-          Search for Recipes
-        </button>
-      )}
-     
     </aside>
   );
 };
 export default Sidebar
+
+

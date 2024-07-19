@@ -122,3 +122,34 @@ html, body {
     font-size: 10px;
   }
 }
+
+
+
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.remove-btn {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 14px;
+  font-weight: 300;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 50px;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.remove-btn:hover {
+  opacity: 1; 
+}
+
+.remove-btn::after {
+  content: '✖';
+}
