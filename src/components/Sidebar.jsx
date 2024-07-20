@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/sidebar.css';
-import Logo from './Logo';
-import DoubleKaratLogo from './DoubleKaratLogo';
+import React, { useState,useEffect } from "react";
+import "../styles/sidebar.css";
+import Logo from "./Logo";
+import DoubleKaratLogo from "./DoubleKaratLogo";
+import ImageUpload from "./ImageUpload";
 
 const Sidebar = ({
   ingredients,
@@ -13,10 +14,10 @@ const Sidebar = ({
   const [isIngredientsBoxVisible, setIsIngredientsBoxVisible] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  
   const handleAddIngredient = () => {
     if (newIngredient.trim() !== "") {
-      addIngredient(newIngredient); // Call the addIngredient function passed as a prop with the new ingredient
+      addIngredient(newIngredient);
       setNewIngredient("");
     }
   };
@@ -25,8 +26,8 @@ const Sidebar = ({
     const handleSearchRecipes = async () => {
       if (ingredients.length === 0) return;
       try {
-        setError(null); 
-        setIsLoading(true); 
+        setError(null);
+        setIsLoading(true);
         await searchRecipes();
       } catch (error) {
         setError("Error fetching recipes. Please try again.");
@@ -38,10 +39,16 @@ const Sidebar = ({
     handleSearchRecipes();
   }, [ingredients]);
 
-
   const toggleIngredientsBox = () => {
     setIsIngredientsBoxVisible(!isIngredientsBoxVisible);
   };
+
+   const handleKeyDown = (event) => {
+     if (event.key === "Enter") {
+       handleAddIngredient();
+       searchRecipes();
+     }
+   };
 
   return (
     <aside className="sidebar">
@@ -59,26 +66,28 @@ const Sidebar = ({
           Add Ingredients
         </button>
       </div>
-      {isIngredientsBoxVisible && ( // Conditionally render the ingredients input box
+      {isIngredientsBoxVisible && (
         <div id="ingredients-box" className="ingredients-box">
           <h2 className="title">Add Your Ingredients</h2>
           <input
             className="ingredients-input"
             type="text"
             placeholder="Manually add ingredients"
-            value={newIngredient} // Bind the input value to the newIngredient state
-            onChange={(e) => setNewIngredient(e.target.value)} // Update the newIngredient state on input change
+            value={newIngredient}
+            onChange={(e) => setNewIngredient(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
-          <button className="add-btn" onClick={() => { handleAddIngredient(); handleSearchRecipes(); }}>
-          {isLoading ? 'Adding...' : 'Add'}
+          <button
+            className="add-btn"
+            onClick={() => {
+              handleAddIngredient();
+              searchRecipes();
+            }}
+          >
+            {isLoading ? "Adding..." : "Add"}
           </button>
-          
           <div>OR</div>
-          <div className="upload-box">
-            <p>
-              Drag & Drop, or <a href="#">Browse</a>
-            </p>
-          </div>
+          <ImageUpload addIngredient={addIngredient} />
         </div>
       )}
       <p className="assumption">
@@ -99,6 +108,5 @@ const Sidebar = ({
     </aside>
   );
 };
-export default Sidebar
 
-
+export default Sidebar;

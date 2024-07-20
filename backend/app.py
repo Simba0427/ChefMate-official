@@ -3,7 +3,9 @@ import os
 import requests  # type: ignore
 from dotenv import load_dotenv # type: ignore
 from flask_cors import CORS # type: ignore
-
+import base64
+from PIL import Image
+import io
 
 load_dotenv() 
 app = Flask(__name__)
@@ -13,6 +15,7 @@ app.secret_key = 'secret-key'
 
 EDAMAM_API_ID = os.getenv('EDAMAM_API_ID')
 EDAMAM_API_KEY = os.getenv('EDAMAM_API_KEY')
+
 
 @app.route('/search', methods=['POST'])
 def search_recipes():
@@ -37,6 +40,7 @@ def get_recipes(query):
     except requests.exceptions.RequestException as e:
         print(f"Failed to fetch recipes for '{query}': {e}")
         return []
+
 
 if __name__ == '__main__':
     app.run(debug=True)
