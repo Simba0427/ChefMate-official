@@ -4,6 +4,8 @@ import MainContent from '../src/components/MainContent'
 import axios from 'axios';
 import Search from '../src/components/Search';
 
+const API_URL = process.env.RENDER_API_URL;
+
 const Dashboard = () => {
 
   
@@ -26,7 +28,7 @@ const Dashboard = () => {
 
   const searchRecipes = async () => {
     try {
-      const response = await axios.post("http://127.0.0.1:5000/search", {
+      const response = await axios.post("${API_URL}/search", {
         recipe_name: ingredients.join(","),
       });
       setSearchResults(response.data.results);
