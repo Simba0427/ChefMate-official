@@ -11,7 +11,6 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
   const [isIngredientsBoxVisible, setIsIngredientsBoxVisible] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isMainBtnVisible, setIsMainBtnVisible] = useState(true); // State to manage button visibility
 
   const handleAddIngredient = async () => {
     if (newIngredient.trim() !== "") {
@@ -34,11 +33,6 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const toggleIngredientsBox = () => {
-    setIsIngredientsBoxVisible(!isIngredientsBoxVisible);
-    setIsMainBtnVisible(false); // Hide the main button when it is clicked
   };
 
   const handleKeyDown = (event) => {
@@ -75,36 +69,26 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
         <Logo />
         <DoubleKaratLogo />
       </div>
-      <div>
-        {isMainBtnVisible && (
-          <button className="main-btn" onClick={toggleIngredientsBox}>
-            <img className="btn-logo" src="/Plus Icon.png" alt="Add ingredients" />
-            Add Ingredients
-          </button>
-        )}
-      </div>
-      {isIngredientsBoxVisible && (
-        <div id="ingredients-box" className="ingredients-box">
-          <div className="search-bar-container">
-            <div className="search-bar">
-              <img className="search-icon" src={searchIcon} alt="Search" />
-              <input
-                className="ingredients-input"
-                type="text"
-                placeholder="Add ingredients manually..."
-                value={newIngredient}
-                onChange={(e) => setNewIngredient(e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
-              <button className="add-btn" onClick={handleAddIngredient}>
-                {"Add"}
-              </button>
-            </div>
+      <div id="ingredients-box" className="ingredients-box">
+        <div className="search-bar-container">
+          <div className="search-bar">
+            <img className="search-icon" src={searchIcon} alt="Search" />
+            <input
+              className="ingredients-input"
+              type="text"
+              placeholder="Add ingredients manually..."
+              value={newIngredient}
+              onChange={(e) => setNewIngredient(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button className="add-btn" onClick={handleAddIngredient}>
+              {"Add"}
+            </button>
           </div>
-          <div className="or-text OR-divider">or</div>
-          <ImageUpload handleImageUpload={handleImageUpload} />
         </div>
-      )}
+        <div className="or-text OR-divider">or</div>
+        <ImageUpload handleImageUpload={handleImageUpload} />
+      </div>
       {error && <p className="error">{error}</p>}
       <p className="assumption">
         We assume you already have salt, pepper, & water.
@@ -122,4 +106,5 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
 };
 
 export default Sidebar;
+
 

@@ -33,7 +33,8 @@ const MainContent = ({searchResults}) => {
           </ul>
         ) : (
           searchResults && searchResults.length === 0 &&
-          <p>No results found.</p>
+          <p className='no-results'>No recipes yet. <br/> 
+          Start by adding ingredients.</p>
         )}
       </div>
     </div>

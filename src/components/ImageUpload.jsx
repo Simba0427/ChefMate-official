@@ -35,7 +35,7 @@ const ImageUpload = ({ handleImageUpload }) => {
     <div className="detect-container">
       {/* Custom styled button for uploading the image file */}
       <label htmlFor="file-upload" className="custom-file-upload">
-        <img src={AddIcon} alt="Upload icon" className="upload-icon" /> Upload Your Ingredients
+        <img src={AddIcon} alt="Upload icon" className="upload-icon" /> Upload Ingredients
       </label>
       <input
         id="file-upload"
