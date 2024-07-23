@@ -1,0 +1,21 @@
+.input-field {
+  font-size: 12px; /* Decrease font size */
+  padding: 8px 12px;
+  border: 1px none #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.detect-btn{
+  border-radius: 30px;
+  background-color: #035C41;
+  font-size: 1rem;
+  color: white;
+  border: 1px none;
+  width: 150px;
+  padding: 5px;
+ margin: 30px;
+ cursor: pointer;
+}
+.p-tag{
+  text-align: center;
+}

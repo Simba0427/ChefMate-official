@@ -25,3 +25,5 @@ Pictures/Photos Library.photoslibrary/
 *.njsproj
 *.sln
 *.sw?
+venv/
+env/
