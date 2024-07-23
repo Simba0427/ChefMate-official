@@ -33,12 +33,12 @@ html, body {
   width: 32px;
   height: 32px;
   margin-left: 64px;
-  
 }
 
 .assumption {
   width: 284px;
-  height: 20px;
+  height: 50px;
+  margin-left: 45px;
   font-size: 0.75rem;
   font-weight: normal;
   font-stretch: normal;
@@ -71,6 +71,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
+  color: #094817;
 }
 
 .remove-btn {
@@ -78,7 +79,7 @@ html, body {
   border: none;
   cursor: pointer;
   padding: 0;
-  margin-right: 70px;
+  margin-right: 40px;
   opacity: 0.7;
   transition: opacity 0.3s;
   width: 14px; 

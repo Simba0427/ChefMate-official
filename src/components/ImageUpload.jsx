@@ -47,7 +47,7 @@ const ImageUpload = ({ handleImageUpload }) => {
       {image && (
         <div>
           {/* Display the uploaded image */}
-          <img src={image} alt="Uploaded" style={{ maxWidth: "250px" }} />
+          <img src={image} alt="Uploaded" className="uploaded" style={{ maxWidth: "250px"}} />
           {/* Button to trigger object detection */}
           <button className="detect-btn" onClick={detectObjects} disabled={loading}>
             {loading ? "Detecting..." : "Detect Objects"}

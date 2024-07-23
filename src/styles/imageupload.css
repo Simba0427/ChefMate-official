@@ -4,15 +4,14 @@
 
 .custom-file-upload {
   display: inline-block;
-  width: 280px;
-  padding: 9px 1px;
+  width: 340px;
+  padding: 8px 12px;
   cursor: pointer;
   background-color: #035C41;
   color: white;
   border-radius: 30px;
-  font-size: 14px;
+  font-size: 15px;
   text-align: center;
-  margin-bottom: 10px;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -21,10 +20,11 @@
 }
 
 .upload-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   vertical-align: middle;
   margin-right: 8px;
+  margin-bottom: 3px;
 }
 
 .detect-btn {
@@ -33,14 +33,28 @@
   font-size: 1rem;
   color: white;
   border: 1px none;
-  width: 200px;
+  width: 230px;
   padding: 5px;
-  margin: 30px;
+  margin: 15px 0 0 7px;
   cursor: pointer;
 }
 
 .detect-btn:hover {
   background-color: #024d34;
+}
+
+.detect-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.uploaded {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .p-tag{
