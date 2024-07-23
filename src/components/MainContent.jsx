@@ -9,8 +9,7 @@ const MainContent = ({searchResults}) => {
       <div className="green-box">
         <h2 className="main-title">Find your next favorite meal.</h2>
         <p className="main-description">
-          Browse dishes perfectly matched to your ingredients or explore closely
-          aligned options to plan upcoming meals with ease.
+          Browse dishes perfectly matched to your ingredients or explore closely aligned options.
         </p>
       </div>
       <div className="search-results">

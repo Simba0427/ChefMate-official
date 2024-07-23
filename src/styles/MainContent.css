@@ -3,7 +3,6 @@
      margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 .main-content {
   flex: 1;
@@ -13,16 +12,16 @@
   align-items: center;
   text-align: center;
   background-color: #faf8f3;
-    width: 100%;
-    max-width: 1092px;
-    min-height: 100vh;
-    padding: 40px 24px; /* Adjust padding to ensure proper spacing */
-    margin: 0 auto;
-  
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 24px; /* Adjust padding to ensure proper spacing */
 }
-.green-box
-{width: 100%; /* Take the full width of the main-content */
-   max-width: calc(1092px - 24px * 2);
+.green-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
   height: 214px;
   margin: 40px 0 230px;
   padding: 40px 247px 48px 247px;
@@ -40,13 +39,14 @@
 }
 
 .main-description {
-  font-size: 1rem;
+  font-size: 15px;
   color: #094817;
   margin-bottom: 400px;
   line-height: 1.75rem;
   text-align: center;
   font-weight: 300;
-  width: 514px;
+  width: 410px;
+  line-height: 1.87;
   height: 56px;
 }
 
@@ -61,38 +61,31 @@
   line-height: 28px;
   font-style: italic;
 }
+
 .ingredients-box {
-  width: 100%;
-  max-width: 771px;
+  width: 377px;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
   gap: 24px;
-  margin: 20px auto; /* Centered with auto margins */
-  padding: 24px 32px 32px;
+  padding: 10px 12px 32px;
   border-radius: 24px;
-  box-shadow: 0 2px 40px 0 rgba(221, 221, 221, 0.6);
-  background-color: #fff;
+  background-color: #faf8f3;
 }
+
 .title{
     font-size: 18px;
     line-height: 22px;
     font-weight: 600;
 }
-.ingredients-input{
-     width: 100%;
-  max-width: 707px;
-  height: 44px;
-  padding: 8px 12px;
-  border-radius: 30px ;
-  border-width: 1px 0 0 0;
-  border-style: solid;
-  border-color: #ccc; /* Adjust border color as needed */
-  display: flex;
-  justify-content: space-between;
-  opacity: 1;
+.ingredients-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  color: #808f71;
 }
 .upload-box {
   border: 2px dashed #ccc;
@@ -111,16 +104,17 @@
   padding: 32px 0;
   border-radius: 20px;
   border: dashed 1px #9eac97;
-  background-color: #fff;
+  background-color: #faf8f3;
 }
 /* styles.css */
 .search-results ul {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-columns: repeat(6, 1fr); /* 4 columns */
   grid-template-rows: repeat(3, auto); /* 3 rows */
   gap: 16px; /* Adjust the gap between items as needed */
   list-style: none;
   padding: 0;
+
 }
 
 .search-results li {

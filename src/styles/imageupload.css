@@ -1,21 +1,48 @@
 .input-field {
-  font-size: 12px; /* Decrease font size */
-  padding: 8px 12px;
-  border: 1px none #ccc;
-  border-radius: 4px;
-  cursor: pointer;
+  display: none; /* Hide the default file input */
 }
-.detect-btn{
+
+.custom-file-upload {
+  display: inline-block;
+  width: 280px;
+  padding: 9px 1px;
+  cursor: pointer;
+  background-color: #035C41;
+  color: white;
+  border-radius: 30px;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #024d34;
+}
+
+.upload-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.detect-btn {
   border-radius: 30px;
   background-color: #035C41;
   font-size: 1rem;
   color: white;
   border: 1px none;
-  width: 150px;
+  width: 200px;
   padding: 5px;
- margin: 30px;
- cursor: pointer;
+  margin: 30px;
+  cursor: pointer;
 }
+
+.detect-btn:hover {
+  background-color: #024d34;
+}
+
 .p-tag{
   text-align: center;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import '../styles/imageupload.css';
+import AddIcon from '../assets/camera-icon.svg';
 
 const ImageUpload = ({ handleImageUpload }) => {
   const [image, setImage] = useState(null); // State for storing the uploaded image
@@ -32,8 +33,17 @@ const ImageUpload = ({ handleImageUpload }) => {
 
   return (
     <div className="detect-container">
-      {/* Input for uploading the image file */}
-      <input className="input-field" type="file" accept="image/*" onChange={handleImageUploadChange} />
+      {/* Custom styled button for uploading the image file */}
+      <label htmlFor="file-upload" className="custom-file-upload">
+        <img src={AddIcon} alt="Upload icon" className="upload-icon" /> Upload Your Ingredients
+      </label>
+      <input
+        id="file-upload"
+        className="input-field"
+        type="file"
+        accept="image/*"
+        onChange={handleImageUploadChange}
+      />
       {image && (
         <div>
           {/* Display the uploaded image */}
@@ -49,6 +59,8 @@ const ImageUpload = ({ handleImageUpload }) => {
 };
 
 export default ImageUpload;
+
+
 
 
 
