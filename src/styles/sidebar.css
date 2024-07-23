@@ -76,22 +76,19 @@ html, body {
 .remove-btn {
   background-color: transparent;
   border: none;
-  color: red;
-  font-size: 14px;
-  font-weight: 300;
   cursor: pointer;
   padding: 0;
-  margin-right: 50px;
-  opacity: 0.3;
+  margin-right: 70px;
+  opacity: 0.7;
   transition: opacity 0.3s;
+  width: 14px; 
+  height: 14px;
+  background-image: url('../assets/trashcan-icon.svg');
+  background-size: contain;
 }
 
 .remove-btn:hover {
-  opacity: 1; 
-}
-
-.remove-btn::after {
-  content: '✖';
+  opacity: 1;
 }
 
 .OR-divider {

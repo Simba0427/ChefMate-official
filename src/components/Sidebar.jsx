@@ -108,3 +108,4 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
 export default Sidebar;
 
 
+
