@@ -1,17 +1,29 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
+=======
+import React, { useState,useEffect } from "react";
+>>>>>>> dd800f8b73f1cd5c11dc49720d8dd1db2b1b44ee
 import "../styles/sidebar.css";
 import Logo from "./Logo";
 import DoubleKaratLogo from "./DoubleKaratLogo";
 import ImageUpload from "./ImageUpload";
+<<<<<<< HEAD
 import axios from "axios";
+=======
+>>>>>>> dd800f8b73f1cd5c11dc49720d8dd1db2b1b44ee
 
 const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }) => {
   const [newIngredient, setNewIngredient] = useState("");
   const [isIngredientsBoxVisible, setIsIngredientsBoxVisible] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+<<<<<<< HEAD
 
   const handleAddIngredient = async () => {
+=======
+  
+  const handleAddIngredient = () => {
+>>>>>>> dd800f8b73f1cd5c11dc49720d8dd1db2b1b44ee
     if (newIngredient.trim() !== "") {
       addIngredient(newIngredient);
       setNewIngredient("");
@@ -19,6 +31,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
     }
   };
 
+<<<<<<< HEAD
   const fetchRecipes = async (ingredientsList) => {
     if (ingredientsList.length === 0) return;
     try {
@@ -33,11 +46,30 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
       setIsLoading(false);
     }
   };
+=======
+  useEffect(() => {
+    const handleSearchRecipes = async () => {
+      if (ingredients.length === 0) return;
+      try {
+        setError(null);
+        setIsLoading(true);
+        await searchRecipes();
+      } catch (error) {
+        setError("Error fetching recipes. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    handleSearchRecipes();
+  }, [ingredients]);
+>>>>>>> dd800f8b73f1cd5c11dc49720d8dd1db2b1b44ee
 
   const toggleIngredientsBox = () => {
     setIsIngredientsBoxVisible(!isIngredientsBoxVisible);
   };
 
+<<<<<<< HEAD
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleAddIngredient();
@@ -65,6 +97,14 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
       setIsLoading(false);
     }
   };
+=======
+   const handleKeyDown = (event) => {
+     if (event.key === "Enter") {
+       handleAddIngredient();
+       searchRecipes();
+     }
+   };
+>>>>>>> dd800f8b73f1cd5c11dc49720d8dd1db2b1b44ee
 
   return (
     <aside className="sidebar">
@@ -89,11 +129,25 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
             onChange={(e) => setNewIngredient(e.target.value)}
             onKeyDown={handleKeyDown}
           />
+<<<<<<< HEAD
           <button className="add-btn" onClick={handleAddIngredient}>
             {isLoading ? "Adding..." : "Add"}
           </button>
           <div>OR</div>
           <ImageUpload handleImageUpload={handleImageUpload} />
+=======
+          <button
+            className="add-btn"
+            onClick={() => {
+              handleAddIngredient();
+              searchRecipes();
+            }}
+          >
+            {isLoading ? "Adding..." : "Add"}
+          </button>
+          <div>OR</div>
+          <ImageUpload addIngredient={addIngredient} />
+>>>>>>> dd800f8b73f1cd5c11dc49720d8dd1db2b1b44ee
         </div>
       )}
       {error && <p className="error">{error}</p>}
@@ -112,8 +166,12 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
     </aside>
   );
 };
+<<<<<<< HEAD
 
 export default Sidebar;
 
 
+=======
+>>>>>>> dd800f8b73f1cd5c11dc49720d8dd1db2b1b44ee
 
+export default Sidebar;
