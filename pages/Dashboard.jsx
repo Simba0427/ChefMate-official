@@ -8,19 +8,21 @@ const Dashboard = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   const addIngredient = (ingredient) => {
-    setIngredients([...ingredients, ingredient]);
+    setIngredients((prevIngredients) => [...prevIngredients, ingredient]);
   };
 
   const removeIngredient = (ingredient) => {
-    setIngredients(ingredients.filter((item) => item !== ingredient));
+    setIngredients((prevIngredients) =>
+      prevIngredients.filter((item) => item !== ingredient)
+    );
   };
 
-  const searchRecipes = async () => {
+  const searchRecipes = async (ingredientsList) => {
     try {
       const response = await axios.post("http://127.0.0.1:5000/search", {
-        recipe_name: ingredients.join(", "),
+        recipe_name: ingredientsList.join(", "),
       });
-      setSearchResults(response.data.results);
+      setSearchResults((prevResults) => [...prevResults, ...response.data.results]);
     } catch (error) {
       console.error("Error fetching recipes:", error);
       alert("Error fetching recipes");
@@ -46,3 +48,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
