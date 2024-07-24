@@ -102,6 +102,10 @@
   color: #808f71;
 }
 
+.ingredients-input:not(:placeholder-shown) {
+  color: #094817;
+}
+
 .upload-box {
   border: 2px dashed #ccc;
   padding: 20px;
