@@ -8,7 +8,6 @@ import searchIcon from "../assets/search-icon.svg";
 
 const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }) => {
   const [newIngredient, setNewIngredient] = useState("");
-  const [isIngredientsBoxVisible, setIsIngredientsBoxVisible] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
