@@ -77,7 +77,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
             !isSidebarCollapsed ? "" : "double-carat"
           }`}
           onClick={toggleSidebar}
-        > 
+        >
           <img
             className="double-carat-logo"
             src="src/assets/Double-Carat.svg"
@@ -106,6 +106,13 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
           <div className="or-text OR-divider">or</div>
           <ImageUpload handleImageUpload={handleImageUpload} />
           {error && <p className="error">{error}</p>}
+          {isLoading && (
+            <div className="d-flex justify-content-center">
+              <div className="spinner-border" role="status">
+                <span className="sr-only"></span>
+              </div>
+            </div>
+          )}
           <p className="assumption">
             We assume you already have salt, pepper, & water.
           </p>
@@ -116,9 +123,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
                 <button
                   className="remove-btn"
                   onClick={() => removeIngredient(ingredient)}
-                >
-                 
-                </button>
+                ></button>
               </li>
             ))}
           </ul>

@@ -6,8 +6,9 @@ import axios from "axios";
 const Dashboard = () => {
   const [ingredients, setIngredients] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => { // Use the useEffect hook to run the searchRecipes function whenever the ingredients state changes
+  useEffect(() => {
     if (ingredients.length > 0) {
       searchRecipes(ingredients);
     } else {
@@ -26,14 +27,20 @@ const Dashboard = () => {
   };
 
   const searchRecipes = async (ingredientsList) => {
+    setIsLoading(true);
     try {
-      const response = await axios.post(`https://chefmate-official.onrender.com/search`, {
-        recipe_name: ingredientsList.join(", "),
-      });
-      setSearchResults(response.data.results); // Update the search results state with the fetched data
+      const response = await axios.post(
+        `https://chefmate-official.onrender.com/search`,
+        {
+          recipe_name: ingredientsList.join(", "),
+        }
+      );
+      setSearchResults(response.data.results);
     } catch (error) {
       console.error("Error fetching recipes:", error);
       alert("Error fetching recipes");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -50,7 +57,7 @@ const Dashboard = () => {
         removeIngredient={removeIngredient}
         searchRecipes={searchRecipes}
       />
-      <MainContent searchResults={searchResults} />
+      <MainContent searchResults={searchResults} isLoading={isLoading} />
     </div>
   );
 };
