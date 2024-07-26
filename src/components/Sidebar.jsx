@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/sidebar.css";
 import Logo from "./Logo";
 import DoubleKaratLogo from "./DoubleKaratLogo";
@@ -11,26 +11,10 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleAddIngredient = async () => {
+  const handleAddIngredient = () => {
     if (newIngredient.trim() !== "") {
       addIngredient(newIngredient);
       setNewIngredient("");
-      await fetchRecipes([...ingredients, newIngredient]);
-    }
-  };
-
-  const fetchRecipes = async (ingredientsList) => {
-    if (ingredientsList.length === 0) return;
-    try {
-      setError(null);
-      setIsLoading(true);
-      console.log('Fetching recipes for ingredients:', ingredientsList);
-      await searchRecipes(ingredientsList);
-    } catch (error) {
-      console.error('Error fetching recipes:', error);
-      setError("Error fetching recipes. Please try again.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -45,15 +29,15 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
       setError(null);
       setIsLoading(true);
       console.log('Uploading image for detection');
-      const response = await axios.post("http://127.0.0.1:5000/api/detect", {
+      const response = await axios.post('http://127.0.0.1:5000/api/detect', {
         imageBase64: base64Image,
       });
       console.log('Detected objects:', response.data.detectedObjects);
       const detectedIngredients = response.data.detectedObjects;
+      // Ensure only the detected objects are added to the ingredients list
       detectedIngredients.forEach((ingredient) => {
         addIngredient(ingredient);
       });
-      await fetchRecipes([...ingredients, ...detectedIngredients]);
     } catch (error) {
       console.error('Error detecting ingredients:', error);
       setError("Error detecting ingredients. Please try again.");
@@ -105,6 +89,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
 };
 
 export default Sidebar;
+
 
 
 

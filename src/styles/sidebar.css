@@ -82,10 +82,12 @@ html, body {
   margin-right: 40px;
   opacity: 0.7;
   transition: opacity 0.3s;
-  width: 14px; 
-  height: 14px;
+  width: 17px; 
+  height: 17px;
   background-image: url('../assets/trashcan-icon.svg');
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .remove-btn:hover {
