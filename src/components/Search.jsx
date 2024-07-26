@@ -4,7 +4,7 @@ import axios from "axios";
 const Search = ({setResults, ingredient}) => {
     const searchRecipes = async () => {
       try {
-        const response = await axios.post("http://127.0.0.1:5000/search", {
+        const response = await axios.post(`https://chefmate-official.onrender.com/search`, {
           recipe_name: ingredients.join(","),
         });
         setResults(response.data.results);
@@ -18,4 +18,4 @@ const Search = ({setResults, ingredient}) => {
   
 }
 
-export default Search
+export default Search;
