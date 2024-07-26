@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../src/components/Sidebar";
 import MainContent from "../src/components/MainContent";
 import axios from "axios";
+import { RENDER_API_URL } from "../config.js";
 
 const Dashboard = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -27,7 +28,7 @@ const Dashboard = () => {
 
   const searchRecipes = async (ingredientsList) => {
     try {
-      const response = await axios.post(`http://127.0.0.1:5000/search`, {
+      const response = await axios.post(`${RENDER_API_URL}/search`, {
         recipe_name: ingredientsList.join(", "),
       });
       setSearchResults(response.data.results); // Update the search results state with the fetched data
