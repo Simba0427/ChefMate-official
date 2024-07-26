@@ -1,6 +1,7 @@
 import React from "react";
+import Sidebar from "./Sidebar";
 
-const DoubleKaratLogo = () => {
+const DoubleKaratLogo = ({ toggleSidebar }) => {
   return (
     <img
       className="double-karat-logo"

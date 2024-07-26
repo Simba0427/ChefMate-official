@@ -10,30 +10,62 @@ html, body {
     height: 100%;
 }
 .sidebar {
-  width: 426px;
-  height: 1024px;
+    width: 426px;
   padding: 22.4px 24px 766px 21px;
   background-color: #faf8f3;
-  border-radius:0 20px 20px 0;
+  border-radius: 0 20px 20px 0;
   border: 2px solid #e7e5e071;
+  overflow: visible;
+  z-index: 1;
+  box-sizing: border-box;
+  overflow: auto;
+ 
 }
 
 .sidebar-header {
   display: flex;
   align-items: center;
 }
+.sidebar.collapsed {
+  width: 78px;
+}
 
+.double-carat{
+  display: none;
+  width: 100px;
+}
+.ingredients-logo  {
+  margin-left: 10em; 
+  width: 0px;
+  border: none;
+  
+}
+.logo-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.chef-logo{
+   margin: 10px 0; 
+  width: 40px;
+  height: 39px;
+  cursor: pointer;
+}
 .logo {
-  width: auto;
-  height: 33px;
-  margin-right: 112px; 
+  margin: 10px 0; 
+  width: 50px;
+  height: 70px;
+  cursor: pointer;
+  
 }
 
-.double-karat-logo {
-  width: 32px;
-  height: 32px;
-  margin-left: 64px;
+.double-carat-logo{
+  background: transparent;
+
 }
+
+
 
 .assumption {
   width: 284px;
@@ -56,7 +88,8 @@ html, body {
   font-size: 14px;
   color: white;
   border: 1px none;
-  width: 90px;
+  /* width: 90px; */
+  width: 25%;
   padding: 7px 0px 7px 0px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -148,12 +181,18 @@ height: 15px;
   border: solid 1px #d6dcd3;
   background-color: #fff;
 }
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 300px;
+  }
 
+  
+}
 /* Media query for tablets */
 @media (max-width: 768px) {
   .sidebar {
-    width: 250px;
-    padding: 20px 10px;
+     width: 100%;
+    padding: 10px;
   }
 
   .logo,
@@ -171,6 +210,11 @@ height: 15px;
   .assumption {
     width: 220px;
     font-size: 11px;
+  }
+   .ingredients-box {
+    width: 2em; 
+    padding: 20px;
+    margin: 20px auto; 
   }
 }
 

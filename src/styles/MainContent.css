@@ -16,6 +16,7 @@
   width: 100%;
   min-height: 100vh;
   padding: 40px 24px; /* Adjust padding to ensure proper spacing */
+  box-sizing: border-box; /* Adjust padding to ensure proper spacing */
 }
 
 .green-box {
@@ -25,10 +26,11 @@
   align-items: center;
   width: 100%;
   height: 214px;
-  margin: 40px 0 230px;
+  margin: 5px 0 60px;
   padding: 40px 247px 48px 247px;
   border-radius: 24px;
   background-color: #e1e683;
+  box-sizing: border-box; 
 }
 
 .main-title {
@@ -43,13 +45,14 @@
 .main-description {
   font-size: 15px;
   color: #094817;
-  margin-bottom: 400px;
+  margin-bottom: 2rem;
   line-height: 1.75rem;
   text-align: center;
   font-weight: 300;
   width: 410px;
   line-height: 1.87;
   height: 56px;
+  
 }
 
 .no-recipes {
@@ -65,7 +68,7 @@
 }
 
 .ingredients-box {
-  width: 377px;
+  width: 23.5em;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -92,7 +95,9 @@
   letter-spacing: normal;
   text-align: center;
   color: #808f71;
+  margin: 9.3em 0;
 }
+
 
 .ingredients-input {
   border: none;
@@ -125,7 +130,6 @@
   background-color: #faf8f3;
 }
 
-/* styles.css */
 .search-results ul {
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* 4 columns */
@@ -149,47 +153,43 @@
   height: auto;
   border-radius: 8px;
 }
-
-.search-results p {
+.results-p{
   font-size: 1em;
+  
   margin: 8px 0;
-}
+  }
 
 .search-results a {
   text-decoration: none;
   color: blue;
   font-weight: bold;
 }
-
+@media (max-width: 1200px) {
+  
+  .main-content {
+    padding: 20px 16px;
+  }
+  .green-box {
+    padding: 40px 10% 48px 10%; /* Adjust padding for smaller screens */
+  }
+  .main-description {
+    width: 70%;
+  }
+}
 /* Media query for tablets */
 @media (max-width: 768px) {
-    .main-content {
-        padding: 20px;
-    }
-
-    .box {
-        padding: 20px;
-    }
-
-    .main-title {
-        font-size: 1.5rem;
-    }
-
-    .main-description {
-        font-size: 1rem;
-        margin-bottom: 20px;
-        line-height: 1.5rem;
-    }
-
-    .no-recipes {
-        font-size: 0.875rem;
-        line-height: 1.5rem;
-    }
-    .ingredients-box {
-    width: 90%; /* Adjust width */
-    padding: 20px;
-    margin: 20px auto; /* Adjust margins */
+    .green-box {
+    padding: 30px 5% 30px 5%; /* Further adjust padding for smaller screens */
+    margin: 20px 0 150px;
   }
+  .main-title {
+    font-size: 2rem;
+  }
+  .main-description {
+    width: 80%;
+  }
+
+   
 }
 
 /* Media query for mobile phones */
@@ -202,15 +202,16 @@
         padding: 10px;
     }
 
-    .main-title {
-        font-size: 1.25rem;
-    }
-
-    .main-description {
-        font-size: 0.875rem;
-        margin-bottom: 15px;
-        line-height: 1.25rem;
-    }
+    .green-box {
+    padding: 20px 3% 20px 3%; /* Further adjust padding for mobile screens */
+    margin: 20px 0 100px;
+  }
+  .main-title {
+    font-size: 1.75rem;
+  }
+  .main-description {
+    width: 90%;
+  }
 
     .no-recipes {
         font-size: 0.75rem;

@@ -19,7 +19,7 @@ const MainContent = ({searchResults}) => {
               <li key={index}>
                 <div>
                   <img src={result.recipe.image} alt={result.recipe.label} />
-                  <p>{result.recipe.label}</p>
+                  <p className='results-p'>{result.recipe.label}</p>
                   <a
                     href={result.recipe.url}
                     target="_blank"
