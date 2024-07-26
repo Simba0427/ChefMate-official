@@ -13,7 +13,10 @@ RENDER_API_URL = os.getenv('RENDER_API_URL');
 
 app.secret_key = 'secret-key' 
 
+EDAMAM_API_ID = os.getenv('EDAMAM_API_ID') # Get the Edamam API ID from the .env file
+EDAMAM_API_KEY = os.getenv('EDAMAM_API_KEY')
 api_key = os.getenv("GEMINI_API_KEY") # Get the Gemini API key from the .env file
+
 if not api_key: # Check if the API key is set
     print("Error: GEMINI_API_KEY is not set in the environment variables.")
 genai.configure(api_key=api_key) # Configure the API client with the API key
@@ -100,8 +103,7 @@ def search_recipes(): # Function to search for recipes
         return jsonify({'error': f"No recipes found for '{ingredient}'."}), 404
 
 def get_recipes(query, start=0, end=24): # Function to fetch recipes from the Edamam API
-    EDAMAM_API_ID = os.getenv('EDAMAM_API_ID') # Get the Edamam API ID from the .env file
-    EDAMAM_API_KEY = os.getenv('EDAMAM_API_KEY') # Get the Edamam API key from the .env file
+   # Get the Edamam API key from the .env file
     url = f"https://api.edamam.com/search?q={query}&app_id={EDAMAM_API_ID}&app_key={EDAMAM_API_KEY}&from={start}&to={end}" # Create the API URL
     try:
         response = requests.get(url) # Send a GET request to the Edamam API

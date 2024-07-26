@@ -68,7 +68,7 @@
 }
 
 .ingredients-box {
-  width: 23.5em;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;

@@ -10,7 +10,14 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
   const [newIngredient, setNewIngredient] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLogoVisible, setIsLogoVisible] = useState(true);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
+  // Function to toggle the collapsed state
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+    setIsLogoVisible(!isLogoVisible);
+  };
   const handleAddIngredient = () => {
     if (newIngredient.trim() !== "") {
       addIngredient(newIngredient);
@@ -47,43 +54,76 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
   };
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isSidebarCollapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header">
-        <Logo />
-        <DoubleKaratLogo />
-      </div>
-      <div id="ingredients-box" className="ingredients-box">
-        <div className="search-bar-container">
-          <div className="search-bar">
-            <img className="search-icon" src={searchIcon} alt="Search" />
-            <input
-              className="ingredients-input"
-              type="text"
-              placeholder="Add ingredients manually..."
-              value={newIngredient}
-              onChange={(e) => setNewIngredient(e.target.value)}
-              onKeyDown={handleKeyDown}
+        {!isSidebarCollapsed && <img src="public/Logo.svg" alt="Logo" />}
+        {isSidebarCollapsed && (
+          <div className="logo-container">
+            <img
+              className="chef-logo"
+              src="src/assets/Union.svg"
+              alt="Chef Logo"
             />
-            <button className="add-btn" onClick={handleAddIngredient}>
-              {"Add"}
-            </button>
+            <img
+              className="logo"
+              src="src/assets/Ingredients Icon.svg"
+              alt="Ingredients Icon"
+              onClick={toggleSidebar}
+            />
           </div>
-        </div>
-        <div className="or-text OR-divider">or</div>
-        <ImageUpload handleImageUpload={handleImageUpload} />
+        )}
+        <button
+          className={`ingredients-logo ${
+            !isSidebarCollapsed ? "" : "double-carat"
+          }`}
+          onClick={toggleSidebar}
+        > 
+          <img
+            className="double-carat-logo"
+            src="src/assets/Double-Carat.svg"
+            alt="Double Carat Logo"
+          />
+        </button>
       </div>
-      {error && <p className="error">{error}</p>}
-      <p className="assumption">
-        We assume you already have salt, pepper, & water.
-      </p>
-      <ul className="ingredients-list">
-        {ingredients.map((ingredient, index) => (
-          <li key={index} className="ingredient-item">
-            {ingredient}
-            <button className="remove-btn" onClick={() => removeIngredient(ingredient)}></button>
-          </li>
-        ))}
-      </ul>
+      {!isSidebarCollapsed && (
+        <div id="ingredients-box" className="ingredients-box">
+          <div className="search-bar-container">
+            <div className="search-bar">
+              <img className="search-icon" src={searchIcon} alt="Search" />
+              <input
+                className="ingredients-input"
+                type="text"
+                placeholder="Add ingredients manually..."
+                value={newIngredient}
+                onChange={(e) => setNewIngredient(e.target.value)}
+                onKeyDown={handleKeyDown}
+              />
+              <button className="add-btn" onClick={handleAddIngredient}>
+                Add
+              </button>
+            </div>
+          </div>
+          <div className="or-text OR-divider">or</div>
+          <ImageUpload handleImageUpload={handleImageUpload} />
+          {error && <p className="error">{error}</p>}
+          <p className="assumption">
+            We assume you already have salt, pepper, & water.
+          </p>
+          <ul className="ingredients-list">
+            {ingredients.map((ingredient, index) => (
+              <li key={index} className="ingredient-item">
+                {ingredient}
+                <button
+                  className="remove-btn"
+                  onClick={() => removeIngredient(ingredient)}
+                >
+                 
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </aside>
   );
 };
