@@ -9,6 +9,7 @@ import google.generativeai as genai
 load_dotenv() # Load environment variables from a .env file
 app = Flask(__name__) 
 CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}) # Allow CORS for the frontend
+RENDER_API_URL = os.getenv('RENDER_API_URL');
 
 app.secret_key = 'secret-key' 
 
