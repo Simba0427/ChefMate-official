@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../styles/sidebar.css";
-import Logo from "./Logo";
-import DoubleKaratLogo from "./DoubleKaratLogo";
 import ImageUpload from "./ImageUpload";
 import axios from "axios";
 import searchIcon from "../assets/search-icon.svg";
+import UnionLogo from "../assets/Union.svg";
+import IngredientsIcon from "../assets/Ingredients Icon.svg";
+import DoubleCaratLogo from "../assets/Double-Carat.svg";
 
 const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }) => {
   const [newIngredient, setNewIngredient] = useState("");
@@ -56,17 +57,13 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
   return (
     <aside className={`sidebar ${isSidebarCollapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header">
-        {!isSidebarCollapsed && <img src="public/Logo.svg" alt="Logo" />}
+        {!isSidebarCollapsed && <img src="/Logo.svg" alt="Logo" />}
         {isSidebarCollapsed && (
           <div className="logo-container">
-            <img
-              className="chef-logo"
-              src="src/assets/Union.svg"
-              alt="Chef Logo"
-            />
+            <img className="chef-logo" src={UnionLogo} alt="Chef Logo" />
             <img
               className="logo"
-              src="src/assets/Ingredients Icon.svg"
+              src={IngredientsIcon}
               alt="Ingredients Icon"
               onClick={toggleSidebar}
             />
@@ -80,7 +77,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
         >
           <img
             className="double-carat-logo"
-            src="src/assets/Double-Carat.svg"
+            src={DoubleCaratLogo}
             alt="Double Carat Logo"
           />
         </button>
