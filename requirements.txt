@@ -7,7 +7,7 @@ click==8.1.7
 colorama==0.4.6
 Flask==3.0.3
 Flask-Cors==4.0.1
-google-ai-generativelanguage==0.6.9
+google-ai-generativelanguage==0.2.0
 google-api-core==2.19.1
 google-api-python-client==2.137.0
 google-auth==2.32.0
