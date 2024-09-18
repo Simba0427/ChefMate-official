@@ -5,7 +5,7 @@ const Search = ({setResults, ingredient}) => {
     const searchRecipes = async () => {
       try {
         const response = await axios.post(
-          `https://chefmate-official-khut.onrender.com`,
+          `https://chefmate-official-backend.onrender.com`,
           {
             recipe_name: ingredients.join(","),
           }

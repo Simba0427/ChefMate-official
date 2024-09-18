@@ -38,7 +38,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
       setIsLoading(true);
       console.log('Uploading image for detection');
       const response = await axios.post(
-        "https://chefmate-official-khut.onrender.com/api/detect",
+        "https://chefmate-official-backend.onrender.com/api/detect",
         {
           imageBase64: base64Image,
         }
