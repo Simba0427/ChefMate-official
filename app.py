@@ -2,13 +2,13 @@ from flask import Flask, request, jsonify
 import os
 import requests
 from dotenv import load_dotenv 
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import base64
 import google.generativeai as genai
 
 load_dotenv() # Load environment variables from a .env file
 app = Flask(__name__) 
-CORS(app, resources={r"/*": {"origins": "https://chefmate.netlify.app/dashboard"}}) # Allow CORS for the frontend
+CORS(app, resources={r"/*": {"origins": "https://chefmate.netlify.app/"}}) # Allow CORS for the frontend
 RENDER_API_URL = os.getenv('RENDER_API_URL');
 
 app.secret_key = 'secret-key' 
@@ -89,6 +89,7 @@ def detect_objects():
         return jsonify({"error": str(e)}), 500
 
 @app.route('/search', methods=['POST'])
+@cross_origin(origins="https://chefmate.netlify.app")
 def search_recipes(): # Function to search for recipes
     data = request.get_json() 
     ingredient = data.get('recipe_name') # Get the ingredient name from the JSON data
