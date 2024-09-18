@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../src/components/Sidebar";
 import MainContent from "../src/components/MainContent";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../src/styles/dashboard.css"// Import your CSS
 
 const Dashboard = () => {
   const [ingredients, setIngredients] = useState([]);
@@ -44,20 +46,19 @@ const Dashboard = () => {
     }
   };
 
-  const containerStyle = {
-    display: "flex",
-    height: "100vh",
-  };
-
   return (
-    <div style={containerStyle}>
-      <Sidebar
-        ingredients={ingredients}
-        addIngredient={addIngredient}
-        removeIngredient={removeIngredient}
-        searchRecipes={searchRecipes}
-      />
-      <MainContent searchResults={searchResults} isLoading={isLoading} />
+    <div className="dashboard">
+      <div className="sidebar-container">
+        <Sidebar
+          ingredients={ingredients}
+          addIngredient={addIngredient}
+          removeIngredient={removeIngredient}
+          searchRecipes={searchRecipes}
+        />
+      </div>
+      <div className="main-content-container">
+        <MainContent searchResults={searchResults} isLoading={isLoading} />
+      </div>
     </div>
   );
 };

@@ -1,304 +1,131 @@
-* {
-    font-family: Plus Jakarta Sans;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.app-container {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-}
-
-/* Sidebar styles */
 .sidebar {
-    width: 426px;
-    padding: 22.4px 24px 766px 21px;
+    width: 25vw; /* Sidebar takes up 25% of the viewport width */
+    max-width: 400px; /* Ensure it doesn't get too wide */
+    min-width: 200px; /* Minimum width for smaller screens */
+    height: 100vh; /* Full viewport height */
+    padding: 1rem; /* Relative padding */
     background-color: #faf8f3;
     border-radius: 0 20px 20px 0;
     border: 2px solid #e7e5e071;
-    z-index: 1;
     box-sizing: border-box;
-}
-
-.sidebar-header {
-    display: flex;
-    align-items: center;
-}
-
-.sidebar.collapsed {
-    width: 78px;
-}
-
-.double-carat {
-    display: none;
-    width: 100px;
-}
-
-.ingredients-logo {
-    margin-left: 45%;
-    width: 0px;
-    border: none;
-}
-
-.logo-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
+    z-index: 2; /* Ensure it's on top of the dashboard */
 }
 
-.chef-logo {
-    margin: 10px 0;
-    width: 40px;
-    height: 39px;
-    cursor: pointer;
+/* Media Query for Mobile/iPad - Sidebar at Top */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        height: 20vh; /* Sidebar takes up 20% of viewport height */
+        border-radius: 0; /* Remove rounded corners */
+        flex-direction: row; /* Stack content horizontally if needed */
+        justify-content: space-between; /* Space out the content */
+        align-items: center; /* Vertically align content */
+        padding: 0.5rem; /* Adjust padding */
+    }
+    
+    /* Sidebar Content in Rows */
+    .sidebar-header,
+    .search-bar-container,
+    .ingredients-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    /* Adjust search bar and other elements to fit within the top */
+    .search-bar {
+        width: 90%; /* Shrink search bar to fit */
+        margin-bottom: 0.5rem;
+    }
+
+    .ingredients-input {
+        width: 75%; /* Shrink input field for mobile */
+    }
+
+    .add-btn {
+        width: 20%; /* Adjust button width */
+    }
+
+    /* Adjust upload box */
+    .upload-box {
+        width: 90%; /* Make upload box narrower */
+        height: 120px; /* Shorter height on mobile */
+        margin-bottom: 0.5rem;
+    }
 }
 
-.logo {
-    margin: 10px 0;
-    width: 50px;
-    height: 70px;
-    cursor: pointer;
-}
-
-.double-carat-logo {
-    background: transparent;
-}
-
-.assumption {
-    width: 284px;
-    height: 50px;
-    margin-left: 45px;
-    font-size: 0.75rem;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: italic;
-    line-height: 1.67;
-    letter-spacing: normal;
-    text-align: center;
-    color: #808f71;
-}
-
-.add-btn {
-    border-radius: 30px;
-    margin: 0 -8px 0 0;
-    background-color: #035c41c2;
-    font-size: 14px;
-    color: white;
-    border: 1px none;
-    width: 25%;
-    padding: 7px 0px 7px 0px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.add-btn:hover {
-    background-color: #035C41;
-}
-
-.ingredient-item {
+/* Sidebar Header */
+.sidebar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0;
-    color: #094817;
+    margin-bottom: 1rem;
 }
 
-.remove-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 40px;
-    opacity: 0.7;
-    transition: opacity 0.3s;
-    width: 17px;
-    height: 17px;
-    background-image: url('../assets/trashcan-icon.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.remove-btn:hover {
-    opacity: 1;
-}
-
-.OR-divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.OR-divider::before,
-.OR-divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #d6dcd3;
-}
-
-.OR-divider:not(:empty)::before {
-    margin-right: 10px;
-}
-
-.OR-divider:not(:empty)::after {
-    margin-left: 10px;
-}
-
-.or-text {
-    font-size: 14px;
-    text-align: center;
-    color: #094817;
-    line-height: 1.36;
-    margin: 0;
-}
-
-.search-icon {
-    margin: 0px 5px 0px 0px;
-    width: 15px;
-    height: 15px;
-}
-
+/* Search Bar Container */
 .search-bar-container {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
+/* Search Bar */
 .search-bar {
-    width: 100%;
+    width: 100%; /* Takes up the full width */
     height: 44px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 40px 0 0px;
-    padding: 8px 12px;
+    padding: 0.5rem; /* Adjust padding */
     border-radius: 30px;
     border: solid 1px #d6dcd3;
     background-color: #fff;
-}
-
-/* Main content styles */
-.main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    background-color: #faf8f3;
-    width: 100%;
-    min-height: 100vh;
-    padding: 40px 24px; /* Adjust padding to ensure proper spacing */
-    box-sizing: border-box; /* Adjust padding to ensure proper spacing */
-}
-
-.green-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 214px;
-    margin: 5px 0 60px;
-    padding: 40px 247px 48px 247px;
-    border-radius: 24px;
-    background-color: #e1e683;
     box-sizing: border-box;
-}
-
-.main-title {
-    font-size: 2.5rem;
-    color: #094817;
-    margin-bottom: 20px;
-    font-weight: 700;
-    line-height: 3.125 rem;
-    margin-bottom: 20px;
-}
-
-.main-description {
-    font-size: 15px;
-    color: #094817;
-    margin-bottom: 2rem;
-    line-height: 1.75rem;
-    text-align: center;
-    font-weight: 300;
-    width: 410px;
-    line-height: 1.87;
-    height: 56px;
-}
-
-.no-recipes {
-    font-size: 1rem;
-    color: #808f71;
-    border: 2px none #ccc;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: 250;
-    line-height: 28px;
-    font-style: italic;
-}
-
-.ingredients-box {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 24px;
-    padding: 10px 12px 14px;
-    border-radius: 24px;
-    background-color: #faf8f3;
-}
-
-.title {
-    font-size: 18px;
-    line-height: 22px;
-    font-weight: 600;
-}
-
-.no-results {
-    font-size: 15px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: italic;
-    line-height: 1.87;
-    letter-spacing: normal;
-    text-align: center;
-    color: #808f71;
-    margin: 9.3em 0;
 }
 
 .ingredients-input {
     border: none;
     outline: none;
-    width: 100%;
+    width: 75%; /* Input field takes up most of the space */
     font-size: 14px;
     color: #808f71;
 }
 
-.ingredients-input:not(:placeholder-shown) {
-    color: #094817;
+.add-btn {
+    width: 20%; /* Add button takes the remaining space */
+    border-radius: 30px;
+    background-color: #035c41c2;
+    font-size: 14px;
+    color: white;
+    padding: 0.5rem 0;
+    text-align: center;
+    cursor: pointer;
 }
 
-.upload-box {
-    border: 2px dashed #ccc;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    height: 236px;
-    align-self: stretch;
-    flex-grow: 0;
+/* Ingredients Box */
+.ingredients-box {
+    width: 100%;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 24px;
+    background-color: #faf8f3;
 }
+
+/* Ingredient Item */
+.ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    color: #094817;
+    width: 100%; /* Ensure ingredient item takes full width */
+}
+
