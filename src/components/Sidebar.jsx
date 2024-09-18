@@ -37,9 +37,12 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
       setError(null);
       setIsLoading(true);
       console.log('Uploading image for detection');
-      const response = await axios.post('https://chefmate-official.onrender.com/api/detect', {
-        imageBase64: base64Image,
-      });
+      const response = await axios.post(
+        "https://chefmate-official-khut.onrender.com/api/detect",
+        {
+          imageBase64: base64Image,
+        }
+      );
       console.log('Detected objects:', response.data.detectedObjects);
       const detectedIngredients = response.data.detectedObjects;
       // Ensure only the detected objects are added to the ingredients list

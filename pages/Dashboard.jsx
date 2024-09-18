@@ -32,7 +32,7 @@ const Dashboard = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `https://chefmate-official.onrender.com/search`,
+        `https://chefmate-official-khut.onrender.com/search`,
         {
           recipe_name: ingredientsList.join(", "),
         }
