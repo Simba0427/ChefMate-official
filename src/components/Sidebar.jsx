@@ -6,6 +6,7 @@ import searchIcon from "../assets/search-icon.svg";
 import UnionLogo from "../assets/Union.svg";
 import IngredientsIcon from "../assets/Ingredients Icon.svg";
 import DoubleCaratLogo from "../assets/Double-Carat.svg";
+import { useNavigate } from "react-router";
 
 const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }) => {
   const [newIngredient, setNewIngredient] = useState("");
@@ -14,6 +15,12 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
   const [isLogoVisible, setIsLogoVisible] = useState(true);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
+  const navigate = useNavigate();
+
+
+   const handleLogoClick = () => {
+     navigate("/"); // Redirect to the loading page
+   };
   // Function to toggle the collapsed state
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
@@ -60,7 +67,9 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
   return (
     <aside className={`sidebar ${isSidebarCollapsed ? "collapsed" : ""}`}>
       <div className="sidebar-header">
-        {!isSidebarCollapsed && <img src="/Logo.svg" alt="Logo" />}
+        {!isSidebarCollapsed && (
+          <img src="/Logo.svg" alt="Logo" onClick={handleLogoClick} style={{cursor: 'pointer'}}/>
+        )}
         {isSidebarCollapsed && (
           <div className="logo-container">
             <img className="chef-logo" src={UnionLogo} alt="Chef Logo" />
@@ -72,18 +81,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
             />
           </div>
         )}
-        {/* <button
-          className={`ingredients-logo ${
-            !isSidebarCollapsed ? "" : "double-carat"
-          }`}
-          onClick={toggleSidebar}
-        >   
-          <img
-            className="double-carat-logo"
-            src={DoubleCaratLogo}
-            alt="Double Carat Logo"
-          />
-        </button> */}
+
         {!isSidebarCollapsed ? (
           <img
             className="double-carat-logo"
