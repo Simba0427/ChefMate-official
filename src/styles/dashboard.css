@@ -3,7 +3,7 @@
   grid-template-columns: 25vw 1fr; /* 25% for sidebar, rest for main content */
   grid-template-rows: 100vh; /* Full height for both sections */
   height: 100vh;
-  overflow: hidden; /* Prevent horizontal scrolling */
+  overflow:scroll; /* Prevent horizontal scrolling */
       background-color: #faf8f3;
 
 }

@@ -180,7 +180,7 @@
 @media (max-width: 768px) {
     .green-box {
         padding: 30px 5% 30px 5%; /* Further adjust padding for smaller screens */
-        margin: 20px 0 150px;
+        margin: 0 auto;
     }
     .main-title {
         font-size: 2rem;
@@ -199,7 +199,8 @@
 @media (max-width: 600px)  {
     .green-box {
         padding: 20px 3% 20px 3%; /* Further adjust padding for mobile screens */
-        margin: 20px 0 100px;
+        margin: 0 auto;
+       
     }
     .main-title {
         font-size: 1.65rem;

@@ -1,12 +1,21 @@
 import React from 'react';
 import '../styles/MainContent.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useMediaQuery } from 'react-responsive';
 
 
 const MainContent = ({searchResults, isLoading}) => {
 
+    // detect if the screen is 768px or less
+    const isMobile = useMediaQuery({query: '(max-width: 768px'});
+
+    // check if theres no recipes
+    const noRecipesLoaded = searchResults.length === 0;
+
   return (
     <div className="main-content">
+      {(noRecipesLoaded && isMobile) || !isMobile ? (
+      
       <div className="green-box">
         <h2 className="main-title">Find your next favorite meal.</h2>
         <p className="main-description">
@@ -14,6 +23,8 @@ const MainContent = ({searchResults, isLoading}) => {
           aligned options.
         </p>
       </div>
+      ) : null
+      }
       <div className="search-results">
         {isLoading ? (
           <div className="d-flex justify-content-center spinner">
