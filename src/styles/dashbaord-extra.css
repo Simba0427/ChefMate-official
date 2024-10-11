@@ -1,0 +1,73 @@
+/* Dashboard grid layout */
+.dashboard {
+  display: grid;
+  grid-template-columns: 25vw 1fr; /* 25% for sidebar, rest for main content */
+  grid-template-rows: 100vh; /* Full height for both sections */
+  height: 100vh;
+  overflow: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Sidebar container */
+.sidebar-container {
+  background-color: #faf8f3;
+  border-right: 2px solid #e7e5e071;
+  padding: 1rem;
+  height: 100%; /* Full height of the sidebar */
+  box-sizing: border-box;
+  overflow: hidden; /* No scrolling allowed */
+}
+
+/* Main content container */
+.main-content-container {
+  background-color: #faf8f3;
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box;
+}
+
+/* Hide elements by default on mobile */
+@media (max-width: 768px) {
+  /* Hide all unnecessary sidebar elements on mobile */
+  .sidebar-header,
+  .ingredients-list, /* Example of ingredient list */
+  .ingredient-item,
+  .remove-btn, /* Buttons to remove ingredients */
+  .assumption, /* Any additional text or elements to hide */
+  .extra-controls { /* Example class for other elements you don't want on mobile */
+    display: none;
+  }
+
+  /* Ensure the search bar and upload box remain visible */
+  .search-bar-container,
+  .upload-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Full width on mobile */
+    margin: 0 auto; /* Center it */
+  }
+
+  /* Adjust the size of the upload box for mobile */
+  .upload-box {
+    height: 150px; /* Adjust height for mobile */
+    padding: 20rem; /* Make sure it's nicely padded */
+  }
+
+  /* Adjust search bar for mobile */
+  .search-bar {
+    width: 100%; /* Full width on mobile */
+    margin-bottom: 1rem;
+  }
+
+  .ingredients-input {
+    width: 90%; /* Adjust width to ensure it fits */
+    font-size: 1rem; /* Make the text readable on mobile */
+  }
+
+  .add-btn {
+    width: auto; /* Adjust button size */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
+

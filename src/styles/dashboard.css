@@ -1,72 +1,53 @@
-/* Dashboard grid layout */
 .dashboard {
   display: grid;
   grid-template-columns: 25vw 1fr; /* 25% for sidebar, rest for main content */
   grid-template-rows: 100vh; /* Full height for both sections */
   height: 100vh;
   overflow: hidden; /* Prevent horizontal scrolling */
+      background-color: #faf8f3;
+
+}
+.sidebar {
+  height: 100vh; /* Full height for the sidebar on larger screens */
+  background-color: #faf8f3; 
+  /* other styles for the sidebar */
 }
 
-/* Sidebar container */
-.sidebar-container {
-  background-color: #faf8f3;
-  border-right: 2px solid #e7e5e071;
-  padding: 1rem;
-  height: 100%; /* Full height of the sidebar */
-  box-sizing: border-box;
-  overflow: hidden; /* No scrolling allowed */
+.main-content {
+  overflow-y: auto; /* Enable vertical scrolling for the main content if it overflows */
+
 }
 
-/* Main content container */
-.main-content-container {
-  background-color: #faf8f3;
-  height: 100%; /* Full height */
-  overflow-y: auto; /* Allow vertical scrolling */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  box-sizing: border-box;
-}
 
-/* Hide elements by default on mobile */
 @media (max-width: 768px) {
-  /* Hide all unnecessary sidebar elements on mobile */
-  .sidebar-header,
-  .ingredients-list, /* Example of ingredient list */
-  .ingredient-item,
-  .remove-btn, /* Buttons to remove ingredients */
-  .assumption, /* Any additional text or elements to hide */
-  .extra-controls { /* Example class for other elements you don't want on mobile */
-    display: none;
+  .dashboard {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    height: auto; /* Let height adjust based on content */
   }
+   .sidebar-container {
+        width: 100vw;
+        background-color: #faf8f3;
+    }
+  
 
-  /* Ensure the search bar and upload box remain visible */
-  .search-bar-container,
-  .upload-box {
-    display: block;
+  .sidebar {
     width: 100%; /* Full width on mobile */
-    margin: 0 auto; /* Center it */
+    height: auto; /* Adjust height to fit content */
+    order: 1; /* Make sure it comes before the main content */
+    border-radius: 0; /* Remove rounded corners */
+        flex-direction: row; /* Stack content horizontally if needed */
+        justify-content: space-between; /* Space out the content */
+        align-items: center; /* Vertically align content */
+        padding: 0.5rem;
+         padding: 0.5rem; /* Adjust padding for mobile */
+        margin: 0; /* Ensure no margins are shrinking the sidebar */
+        box-sizing: border-box; 
   }
 
-  /* Adjust the size of the upload box for mobile */
-  .upload-box {
-    height: 150px; /* Adjust height for mobile */
-    padding: 1rem; /* Make sure it's nicely padded */
-  }
-
-  /* Adjust search bar for mobile */
-  .search-bar {
+  .main-content {
     width: 100%; /* Full width on mobile */
-    margin-bottom: 1rem;
-  }
-
-  .ingredients-input {
-    width: 90%; /* Adjust width to ensure it fits */
-    font-size: 1rem; /* Make the text readable on mobile */
-  }
-
-  .add-btn {
-    width: auto; /* Adjust button size */
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    height: auto; /* Adjust height to fit content */
+    order: 2; /* Comes after the sidebar */
   }
 }
-

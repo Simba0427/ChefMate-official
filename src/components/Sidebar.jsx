@@ -72,18 +72,26 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
             />
           </div>
         )}
-        <button
+        {/* <button
           className={`ingredients-logo ${
             !isSidebarCollapsed ? "" : "double-carat"
           }`}
           onClick={toggleSidebar}
-        >
+        >   
           <img
             className="double-carat-logo"
             src={DoubleCaratLogo}
             alt="Double Carat Logo"
           />
-        </button>
+        </button> */}
+        {!isSidebarCollapsed ? (
+          <img
+            className="double-carat-logo"
+            src={DoubleCaratLogo}
+            alt="Double Carat Logo"
+            onClick={toggleSidebar} /* Make the image clickable */
+          />
+        ) : null}
       </div>
       {!isSidebarCollapsed && (
         <div id="ingredients-box" className="ingredients-box">
@@ -103,7 +111,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
               </button>
             </div>
           </div>
-          <div className="or-text OR-divider">or</div>
+          <div className="text-center or-text">or</div>
           <ImageUpload handleImageUpload={handleImageUpload} />
           {error && <p className="error">{error}</p>}
           {isLoading && (
@@ -113,7 +121,7 @@ const Sidebar = ({ ingredients, addIngredient, removeIngredient, searchRecipes }
               </div>
             </div>
           )}
-          <p className="assumption">
+          <p className="assumption text-center">
             We assume you already have salt, pepper, & water.
           </p>
           <ul className="ingredients-list">

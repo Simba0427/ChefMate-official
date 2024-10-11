@@ -14,6 +14,57 @@
     z-index: 2; /* Ensure it's on top of the dashboard */
 }
 
+.double-carat{
+  background: transparent;
+width: 300px;
+}
+
+
+/* Media Query for Mobile/iPad - Sidebar at Top */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Sidebar takes full width */
+        height: 20vh; /* Sidebar takes up 20% of viewport height */
+        border-radius: 0; /* Remove rounded corners */
+        flex-direction: row; /* Stack content horizontally if needed */
+        justify-content: space-between; /* Space out the content */
+        align-items: center; /* Vertically align content */
+        padding: 0.5rem; /* Adjust padding */
+    }
+    
+    /* Sidebar Content in Rows */
+    .sidebar-header,
+    .search-bar-container,
+    .ingredients-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    /* Adjust search bar and other elements to fit within the top */
+    .search-bar {
+        width: 90%; /* Shrink search bar to fit */
+        margin-bottom: 0.5rem;
+    }
+
+    .ingredients-input {
+        width: 75%; /* Shrink input field for mobile */
+    }
+
+    .add-btn {
+        width: 20%; /* Adjust button width */
+    }
+
+    /* Adjust upload box */
+    .upload-box {
+        width: 90%; /* Make upload box narrower */
+        height: 120px; /* Shorter height on mobile */
+        margin-bottom: 0.5rem;
+    }
+}
 
 /* Sidebar Header */
 .sidebar-header {
@@ -28,28 +79,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-}
-
-
-.double-carat-logo {
-    background: transparent;
-    border: none;
-    display: block; /* Ensures the image doesn't inherit button inline styles */
-    width: 10%; /* Adjust the width to ensure it fits */
-    height: auto; /* Maintain aspect ratio */
-    cursor: pointer;
-}
-.logo-container{
-    display: flex;
-    flex-direction: column;
-    
-}
-.chef-logo, .logo{
-    height: auto;
-    width: 2.6rem;
-    margin: 5px;
-        cursor: pointer;
-
 }
 
 /* Search Bar */
@@ -86,6 +115,7 @@
     cursor: pointer;
 }
 
+/* Ingredients Box */
 .ingredients-box {
     width: 100%;
     display: flex;
@@ -104,58 +134,4 @@
     color: #094817;
     width: 100%; /* Ensure ingredient item takes full width */
 }
-.remove-btn {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  width: 14px; 
-  height: 14px;
-  background-image: url('../assets/trashcan-icon.svg');
-  background-size: contain;
-}
 
-.remove-btn:hover {
-  opacity: 1;}
-
-
-@media (max-width: 768px){
-   aside.sidebar{
-    max-width: 100%;
-   }
-
-    .add-btn,
-    .assumption, /* Hides the "We assume..." text */
-    .remove-btn, /* Hides the remove buttons */
-    .sidebar-header {
-        display: none;
-    }
-
-    .ingredients-box,
-    .search-bar-container {
-        width: 100%; /* Ensure inner content adjusts to the full width of the sidebar */
-    }
-    .ingredient-item{
-
-        padding: 2px;
-        margin-left: 1rem;
-    }
-     .ingredients-list {
-        display: flex;
-        flex-direction: row; /* Stack list items vertically */
-        flex-wrap: wrap; /* Allow wrapping to next line if needed */
-        gap: 0rem; /* Space between items */
-        padding: 0;
-        margin: 0;
-    }
-
-    .remove-btn {
-        margin-left: 0rem; /* Space between ingredient text and remove button */
-        display: inline-block;
-    }
-        
-    
-    
-}

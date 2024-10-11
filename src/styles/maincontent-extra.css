@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 .main-content {
     flex: 1;
     display: flex;
@@ -16,6 +17,7 @@
     padding: 40px 24px; /* Adjust padding to ensure proper spacing */
     box-sizing: border-box; /* Adjust padding to ensure proper spacing */
 }
+
 .green-box {
     display: flex;
     flex-direction: column;
@@ -160,8 +162,7 @@
     margin-top: 150px;
     color: #094817;
 }
-
-
+/* Media query for large screens */
 @media (max-width: 1200px) {
     .main-content {
         padding: 20px 16px;
@@ -202,7 +203,7 @@
         margin: 20px 0 100px;
     }
     .main-title {
-        font-size: 1.65rem;
+        font-size: 1.75rem;
     }
     .main-description {
         width: 90%;
