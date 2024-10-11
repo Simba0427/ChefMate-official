@@ -7,13 +7,20 @@
     background-color: #faf8f3;
     border-radius: 0 20px 20px 0;
     border: 2px solid #e7e5e071;
+    border-bottom: none;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     z-index: 2; /* Ensure it's on top of the dashboard */
-}
+        transition: width 0.3s ease-in-out;
 
+}
+ .sidebar.collapsed{
+     width: 60px; /* Smaller width when collapsed */
+    border-right: none; /* Hide the border when collapsed */
+    transition: width 0.3s ease-in-out;
+ }
 
 /* Sidebar Header */
 .sidebar-header {
